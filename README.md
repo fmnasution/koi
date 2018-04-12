@@ -17,9 +17,9 @@ Define the message
 ```clojure
 (defrecord PrintlnMessage [message]
   msg/IMessage
-  (handle [message context]
+  (handle [{:keys [message]} context]
     (println "Incoming message: " message))
-  (handle-error [message context error]
+  (handle-error [{:keys [message]} context error]
     (println "Error:" error "when processing message:" message)))
     
 (defn new-println-message
